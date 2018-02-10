@@ -8,12 +8,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "?.git"
+    "url": "https://github.com/Ridge2/workflows.git"
   },
   "author": "Ridge Francis",
   "license": "ISC",
   "devDependencies": {
     "gulp": "^3.9.1",
+    "gulp-coffee": "^3.0.2",
     "gulp-util": "^3.0.8"
   }
 }
