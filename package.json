@@ -13,11 +13,20 @@
   "author": "Ridge Francis",
   "license": "ISC",
   "devDependencies": {
+    "grunt": "^1.0.2",
+    "grunt-sass": "^2.1.0",
     "gulp": "^3.9.1",
     "gulp-browserify": "^0.5.1",
     "gulp-coffee": "^3.0.2",
+    "gulp-compass": "^2.1.0",
     "gulp-concat": "^2.6.1",
     "gulp-util": "^3.0.8",
-    "mustache": "^2.3.0"
+    "mustache": "^2.3.0",
+    "node-sass": "^4.7.2",
+    "ruby": "^0.6.1"
+  },
+  "dependencies": {
+    "grunt-sass": "^2.1.0",
+    "node-sass": "^4.7.2"
   }
 }
