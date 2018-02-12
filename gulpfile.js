@@ -3,7 +3,8 @@ var gulp = require('gulp'),
     coffee = require('gulp-coffee'),
     concat = require('gulp-concat'),
     compass = require('gulp-compass'),
-    browserify = require('gulp-browserify');
+    browserify = require('gulp-browserify'),
+    connect = require('gulp-connect');
 
 var coffeeSources = ['components/coffee/tagline.coffee']
 var jsSources = [
@@ -27,7 +28,8 @@ gulp.task('js', function () {
     gulp.src(jsSources)
         .pipe(concat('script.js')) // Name given to the file to concatenate
         .pipe(browserify())
-        .pipe(gulp.dest('builds/development/js')); //Destination of file "script.js file that I created above"
+        .pipe(gulp.dest('builds/development/js')) //Destination of file "script.js file that I created above"
+        .pipe(connect.reload())
 });
 
 gulp.task('compass', function () {
@@ -38,15 +40,26 @@ gulp.task('compass', function () {
             style: 'expanded'
         }))
         .on('error', gutil.log)
-        .pipe(gulp.dest('builds/development/css'));
+        .pipe(gulp.dest('builds/development/css'))
+        .pipe(connect.reload())
 });
 
+// Gulp watch waits for changes to files and run them automatically
+//
 gulp.task('watch', function () {
     gulp.watch(coffeeSources, ['coffee']);
     gulp.watch(jsSources, ['js']);
-    gulp.watch(sassSources, ['components/sass/*.scss']);
+    gulp.watch('components/sass/*.scss', ['compass']);
+});
+// This code connects you to the server and reloads when there are any changes
+//
+gulp.task('connect', function () {
+    connect.server({
+        root: 'builds/development/',
+        livereload: true
+    });
 });
 
 // default runs this object by default by just running "gulp" in the command line
 //
-gulp.task('default', ['coffee', 'js,', 'compass', 'watch']);
+gulp.task('default', ['coffee', 'js', 'compass', 'connect', 'watch']);
