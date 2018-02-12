@@ -41,6 +41,12 @@ gulp.task('compass', function () {
         .pipe(gulp.dest('builds/development/css'));
 });
 
+gulp.task('watch', function () {
+    gulp.watch(coffeeSources, ['coffee']);
+    gulp.watch(jsSources, ['js']);
+    gulp.watch(sassSources, ['components/sass/*.scss']);
+});
+
 // default runs this object by default by just running "gulp" in the command line
 //
 gulp.task('default', ['coffee', 'js,', 'compass']);
