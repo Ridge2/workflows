@@ -49,4 +49,4 @@ gulp.task('watch', function () {
 
 // default runs this object by default by just running "gulp" in the command line
 //
-gulp.task('default', ['coffee', 'js,', 'compass']);
+gulp.task('default', ['coffee', 'js,', 'compass', 'watch']);
