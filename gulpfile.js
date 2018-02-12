@@ -40,3 +40,7 @@ gulp.task('compass', function () {
         .on('error', gutil.log)
         .pipe(gulp.dest('builds/development/css'));
 });
+
+// default runs this object by default by just running "gulp" in the command line
+//
+gulp.task('default', ['coffee', 'js,', 'compass']);
