@@ -7,7 +7,12 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     compass = require('gulp-compass'),
     browserify = require('gulp-browserify'),
+    gulpif = require('gulp-if'),
+    rename = require("gulp-rename"),
+    uglify = require("gulp-uglify"),
+    beautify = require('gulp-beautify'),
     connect = require('gulp-connect');
+    minifyHtml= require('gulp-minify-html');
 
 var outputDir,
     coffeeSources,
@@ -16,17 +21,20 @@ var outputDir,
     env,
     sassSources,
     sassStyle,
+    condition,
     htmlSources;
 
 env = process.env.NODE_ENV || 'development';
 
 if (env === 'developement') {
-    outputDir = 'builds/developnent/';
+    outputDir = 'builds/development/';
     sassStyle = 'expanded';
+    condition = false;
 }
 else {
     outputDir = 'builds/production/';
     sassStyle = 'compressed';
+    condition = true;
 }
 
 coffeeSources = ['components/coffee/tagline.coffee']
@@ -53,6 +61,8 @@ gulp.task('js', function () {
     gulp.src(jsSources)
         .pipe(concat('script.js')) // Name given to the file to concatenate
         .pipe(browserify()) // js code uses browserify  
+        .pipe(gulpif(condition, uglify(), beautify()))
+        .pipe(rename('script.js'))
         .pipe(gulp.dest(outputDir + 'js')) //Destination of file "script.js" file that I created above
         .pipe(connect.reload())
 });
@@ -75,7 +85,7 @@ gulp.task('watch', function () {
     gulp.watch(coffeeSources, ['coffee']);
     gulp.watch(jsSources, ['js']);
     gulp.watch('components/sass/*.scss', ['compass']);
-    gulp.watch(htmlSources, ['html']);
+    gulp.watch('builds/development/*html', ['html']);
     gulp.watch(jsonSources, ['json']);
 });
 // This code connects you to the server and reloads when there are any changes
@@ -89,9 +99,10 @@ gulp.task('connect', function () {
 // Reload html
 //
 gulp.task('html', function () {
-    gulp.src(htmlSources)
-        .pipe(connect.reload())
-
+    gulp.src('builds/development/*html')
+    .pipe(gulpif(env === 'production', minifyHtml()))
+    .pipe(gulpif(env === 'production', gulp.dest(outputDir)))
+    .pipe(connect.reload())
 });
 // Reload json 
 //
