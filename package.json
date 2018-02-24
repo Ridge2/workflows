@@ -1,40 +1,42 @@
 {
-	"name": "workflows",
-	"version": "1.0.0",
-	"description": "Learning workflows",
-	"main": "index.js",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/Ridge2/workflows.git"
-	},
-	"author": "Ridge Francis",
-	"license": "ISC",
-	"devDependencies": {
-		"grunt": "^1.0.2",
-		"grunt-sass": "^2.1.0",
-		"gulp": "^3.9.1",
-		"gulp-beautify": "^2.0.1",
-		"gulp-browserify": "^0.5.1",
-		"gulp-coffee": "^3.0.2",
-		"gulp-compass": "^2.1.0",
-		"gulp-concat": "^2.6.1",
-		"gulp-connect": "^5.2.0",
-		"gulp-if": "^2.0.2",
-		"gulp-minify-html": "^1.0.6",
-		"gulp-rename": "^1.2.2",
-		"gulp-uglify": "^3.0.0",
-		"gulp-util": "^3.0.8",
-		"jquery": "^3.3.1",
-		"mustache": "^2.3.0",
-		"node-sass": "^4.7.2",
-		"ruby": "^0.6.1",
-		"uglify-es": "^3.3.10"
-	},
-	"dependencies": {
-		"grunt-sass": "^2.1.0",
-		"node-sass": "^4.7.2"
-	}
+  "name": "workflows",
+  "version": "1.0.0",
+  "description": "Learning workflows",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ridge2/workflows.git"
+  },
+  "author": "Ridge Francis",
+  "license": "ISC",
+  "devDependencies": {
+    "grunt": "^1.0.2",
+    "grunt-sass": "^2.1.0",
+    "gulp": "^3.9.1",
+    "gulp-beautify": "^2.0.1",
+    "gulp-browserify": "^0.5.1",
+    "gulp-coffee": "^3.0.2",
+    "gulp-compass": "^2.1.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-connect": "^5.2.0",
+    "gulp-if": "^2.0.2",
+    "gulp-jsonminify": "^1.1.0",
+    "gulp-minify-html": "^1.0.6",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^3.0.0",
+    "gulp-util": "^3.0.8",
+    "jquery": "^3.3.1",
+    "mustache": "^2.3.0",
+    "node-sass": "^4.7.2",
+    "ruby": "^0.6.1",
+    "uglify-es": "^3.3.10",
+    "uglify-js": "^3.3.12"
+  },
+  "dependencies": {
+    "grunt-sass": "^2.1.0",
+    "node-sass": "^4.7.2"
+  }
 }
